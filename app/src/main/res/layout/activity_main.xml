@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="387dp"
+        android:layout_height="324dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/hydrogenInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="hydrogen"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultText" />
+
+    <EditText
+        android:id="@+id/carbonInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="carbon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hydrogenInput" />
+
+    <EditText
+        android:id="@+id/sulfurInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="sulfur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carbonInput" />
+
+    <EditText
+        android:id="@+id/nitrogenInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="nitrogen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sulfurInput" />
+
+    <EditText
+        android:id="@+id/oxygenInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="oxygen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nitrogenInput" />
+
+    <EditText
+        android:id="@+id/moistureInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="moisture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oxygenInput" />
+
+    <EditText
+        android:id="@+id/ashInput"
+        android:layout_width="390dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="ash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moistureInput" />
+
+    <Button
+        android:id="@+id/calcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ashInput" />
+
+    <Button
+        android:id="@+id/toTask2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Task2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calcButton"
+        app:layout_constraintTop_toBottomOf="@+id/ashInput" />
+</androidx.constraintlayout.widget.ConstraintLayout>

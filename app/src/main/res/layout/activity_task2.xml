@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".task2">
+
+    <Button
+        android:id="@+id/toTask1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Task1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vanadiumInput2" />
+
+    <EditText
+        android:id="@+id/carbonInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="carbon"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultText2" />
+
+    <EditText
+        android:id="@+id/hydrogenInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="hydrogen"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carbonInput2" />
+
+    <EditText
+        android:id="@+id/oxygenInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="oxygen"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hydrogenInput2" />
+
+    <EditText
+        android:id="@+id/sulfurInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="sulfur"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oxygenInput2" />
+
+    <EditText
+        android:id="@+id/lowerHeatingValueInput"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="lowerHeatingValue"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sulfurInput2" />
+
+    <EditText
+        android:id="@+id/moistureInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="moisture"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowerHeatingValueInput" />
+
+    <EditText
+        android:id="@+id/ashInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="ash"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moistureInput2" />
+
+    <EditText
+        android:id="@+id/vanadiumInput2"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="vanadium"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ashInput2" />
+
+    <Button
+        android:id="@+id/calcButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toEndOf="@+id/toTask1"
+        app:layout_constraintTop_toBottomOf="@+id/vanadiumInput2" />
+
+    <TextView
+        android:id="@+id/resultText2"
+        android:layout_width="390dp"
+        android:layout_height="286dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
