@@ -49,12 +49,17 @@ class task2 : AppCompatActivity() {
 
             val lowerHeatingComponents = LowerHeatingComponents(carbon, hydrogen, oxygen, sulfur, lowerHeatingValue, moisture, ash, vanadium)
 
-            val calculator = Calculator(fuel = null, lowerHeatingsComponents = lowerHeatingComponents)
+            val calculator = Calculator()
 
+            val calcResult = calculator.calculateLowerHeatingValue(lowerHeatingComponents)
 
-            val calcResult = calculator.calculateLowerHeatingValue()
+            var result = ""
 
-            resultText.text = "Result: $calcResult МДж/кг"
+            calcResult?.forEach { (key, value) ->
+                result += "$key, $value\n"
+            }
+
+            resultText.text = "Result: \n$result"
         }
 
         toTask1Button.setOnClickListener {

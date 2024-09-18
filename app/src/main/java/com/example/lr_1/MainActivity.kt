@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity() {
 
             val fuel = FuelComponents(hydrogen, carbon, sulfur, nitrogen, oxygen, moisture, ash)
 
-            val calculator = Calculator(fuel = fuel, lowerHeatingsComponents = null)
+            val calculator = Calculator()
 
-            val calcResults = calculator.calculateFuelParametrs()
+            val calcResults = calculator.calculateFuelParametrs(fuel)
 
             var result = ""
 

@@ -1,7 +1,7 @@
 package com.example.lr_1
 
-class Calculator(private val fuel: FuelComponents?, private val lowerHeatingsComponents: LowerHeatingComponents?) {
-    fun calculateFuelParametrs(): Map<String, Any> {
+class Calculator() {
+    fun calculateFuelParametrs(fuel: FuelComponents?): Map<String, Any> {
         if(fuel != null) {
             val kRS = 100 / (100 - fuel.moisture)
             val kRG = 100 / (100 - fuel.moisture - fuel.ash)
@@ -19,7 +19,11 @@ class Calculator(private val fuel: FuelComponents?, private val lowerHeatingsCom
             val nitrogenCombustible = fuel.nitrogen * kRG
             val oxygenCombustible = fuel.oxygen * kRG
 
-            val qPN = 339 * fuel.carbon + 1030 * fuel.hydrogen - 108.8 * (fuel.oxygen - fuel.sulfur) - 25 * fuel.moisture
+            val lowerHeatingValueWorking = (339 * fuel.carbon + 1030 * fuel.hydrogen - 108.8 * (fuel.oxygen - fuel.sulfur) - 25 * fuel.moisture) / 1000
+
+            val lowerHeatingValueDry = (lowerHeatingValueWorking + 0.025 * fuel.moisture) * (100 / (100 - fuel.moisture))
+
+            val lowerHeatingValueCombustible = (lowerHeatingValueWorking + 0.025 * fuel.moisture) * (100 / (100 - fuel.moisture - fuel.ash))
 
             return mapOf (
                 "kRS" to kRS,
@@ -35,21 +39,41 @@ class Calculator(private val fuel: FuelComponents?, private val lowerHeatingsCom
                 "sulfurCombustible" to "$sulfurCombustible %",
                 "nitrogenCombustible" to nitrogenCombustible,
                 "oxygenCombustible" to "$oxygenCombustible %",
-                "lowerHeatingValue" to "$qPN МДж/кг"
+                "lowerHeatingValueWorking" to "$lowerHeatingValueWorking МДж/кг",
+                "lowerHeatingValueDry" to "$lowerHeatingValueDry МДж/кг",
+                "lowerHeatingValueCombustible" to "$lowerHeatingValueCombustible МДж/кг"
             )
         } else return mapOf("error" to "Fuel components are missing")
 
     }
 
-    fun calculateLowerHeatingValue(): Float? {
-        if(lowerHeatingsComponents != null) {
+    fun wokingCalc(element: Float, lowerHeatingsComponents: LowerHeatingComponents): Float {
+        return element * (100 - lowerHeatingsComponents.moisture - lowerHeatingsComponents.ash) / 100
+    }
+
+    fun calculateLowerHeatingValue(lowerHeatingsComponents: LowerHeatingComponents?): Map<String, Any> {
+        if (lowerHeatingsComponents != null) {
             val moistureFraction = lowerHeatingsComponents.moisture / 100
             val ashFraction = lowerHeatingsComponents.ash / 100
 
-            val heatingValueDry =
-                lowerHeatingsComponents.lowerHeatingValue * (1 - moistureFraction) * (1 - ashFraction)
+            val carbonWorking = this.wokingCalc(lowerHeatingsComponents.carbon, lowerHeatingsComponents)
+            val hydrogenWorking = this.wokingCalc(lowerHeatingsComponents.hydrogen, lowerHeatingsComponents)
+            val oxygenWorking = this.wokingCalc(lowerHeatingsComponents.oxygen, lowerHeatingsComponents)
+            val sulfurWorking = this.wokingCalc(lowerHeatingsComponents.sulfur, lowerHeatingsComponents)
+            val ashWorking = this.wokingCalc(lowerHeatingsComponents.ash, lowerHeatingsComponents)
+            val vanadiumWorking = this.wokingCalc(lowerHeatingsComponents.vanadium, lowerHeatingsComponents)
 
-            return heatingValueDry
-        } else return null
+            val heatingValueWorkingMass = lowerHeatingsComponents.lowerHeatingValue * (1 - moistureFraction) * (1 - ashFraction)
+
+            return mapOf(
+                "carbonWorkingMass" to "${carbonWorking} %",
+                "hydrogenWorkingMass" to "${hydrogenWorking} %",
+                "oxygenWorkingMass" to "${oxygenWorking} %",
+                "sulfurWorkingMass" to "${sulfurWorking} %",
+                "ashWorkingMass" to "${ashWorking} %",
+                "vanadiumWorkingMass" to "${vanadiumWorking} %",
+                "lowerHeatingValueWorkingMass" to "%.2f МДж/кг".format(heatingValueWorkingMass)
+            )
+        } else return return mapOf("error" to "Fuel components are missing")
     }
 }
